@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '12'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
@@ -15,4 +15,4 @@ openssl:
 target_platform:
 - linux-64
 zlib:
-- '1.2'
+- '1'
