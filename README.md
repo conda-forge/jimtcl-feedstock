@@ -18,7 +18,6 @@ Programming system, Functional Programming commands, first-class arrays and
 UTF-8 support. All this with a binary size of about 100-200kB (depending
 upon selected options).
 
-
 Current build status
 ====================
 
