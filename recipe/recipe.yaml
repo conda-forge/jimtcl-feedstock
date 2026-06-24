@@ -49,13 +49,15 @@ requirements:
 
 tests:
   - files:
+      recipe:
+        - run-tests.sh
       source:
         - tests/
         - tcltest.tcl
         - tclcompat.tcl
     script:
       - jimsh --version
-      - jimsh tests/runall.tcl
+      - bash run-tests.sh
 
 about:
   summary: A small footprint implementation of the Tcl programming language
