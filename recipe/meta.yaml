@@ -37,6 +37,11 @@ requirements:
 test:
   commands:
     - jimsh --version
+    - jimsh tests/runall.tcl
+  files:
+    - tests/
+    - tcltest.tcl
+    - tclcompat.tcl
 
 about:
   home: https://jim.tcl.tk/index.html/doc/www/www/
