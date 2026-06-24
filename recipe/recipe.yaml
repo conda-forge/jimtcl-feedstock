@@ -1,0 +1,77 @@
+schema_version: 1
+
+context:
+  name: jimtcl
+  version: "0.83"
+
+package:
+  name: ${{ name|lower }}
+  version: "${{ version }}"
+
+source:
+  - url: https://github.com/msteveb/jimtcl/archive/refs/tags/${{ version }}.tar.gz
+    sha256: 6f2df00009f5ac4ad654c1ae1d2f8ed18191de38d1f5a88a54ea99cc16936686
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - if: unix
+      then:
+      - make
+      - pkg-config
+    - if: win
+      then:
+      - m2w64-make
+      - ${{ compiler('m2w64-toolchain') }}
+      - m2w64-pkg-config
+      - m2w64-openssl
+      - m2w64-zlib
+      - m2-bash
+      - m2-sed
+  host:
+    - if: unix
+      then:
+      - openssl
+      - zlib
+    - if: win
+      then:
+      - m2w64-openssl
+      - m2w64-zlib
+  run:
+    - if: win
+      then:
+      - m2w64-openssl
+      - m2w64-zlib
+
+tests:
+  - files:
+      recipe:
+        - tests/
+        - tcltest.tcl
+        - tclcompat.tcl
+    script:
+      - jimsh --version
+      - jimsh tests/runall.tcl
+
+about:
+  summary: A small footprint implementation of the Tcl programming language
+  description: |
+    Jim is an opensource small-footprint implementation of the Tcl programming
+    language. It implements a large subset of Tcl and adds new features like
+    references with garbage collection, closures, built-in Object Oriented
+    Programming system, Functional Programming commands, first-class arrays and
+    UTF-8 support. All this with a binary size of about 100-200kB (depending
+    upon selected options).
+  license: BSD-2-Clause
+  license_file: LICENSE
+  homepage: https://jim.tcl.tk/index.html/doc/www/www/
+  repository: https://github.com/msteveb/jimtcl
+
+extra:
+  recipe-maintainers:
+    - mdekstrand
+
