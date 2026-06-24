@@ -49,7 +49,7 @@ requirements:
 
 tests:
   - files:
-      recipe:
+      source:
         - tests/
         - tcltest.tcl
         - tclcompat.tcl
