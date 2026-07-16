@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: jimtcl
-  version: "0.83"
+  version: "0.84"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/msteveb/jimtcl/archive/refs/tags/${{ version }}.tar.gz
-    sha256: 6f2df00009f5ac4ad654c1ae1d2f8ed18191de38d1f5a88a54ea99cc16936686
+    sha256: 435095b436b38b96dd85e8cda13878144813bf52066057f76368db178dd8fea2
 
 build:
   number: 0
@@ -21,31 +21,31 @@ requirements:
     - ${{ stdlib('c') }}
     - if: unix
       then:
-      - make
-      - pkg-config
+        - make
+        - pkg-config
     - if: win
       then:
-      - m2w64-make
-      - ${{ compiler('m2w64-toolchain') }}
-      - m2w64-pkg-config
-      - m2w64-openssl
-      - m2w64-zlib
-      - m2-bash
-      - m2-sed
+        - m2w64-make
+        - ${{ compiler('m2w64-toolchain') }}
+        - m2w64-pkg-config
+        - m2w64-openssl
+        - m2w64-zlib
+        - m2-bash
+        - m2-sed
   host:
     - if: unix
       then:
-      - openssl
-      - zlib
+        - openssl
+        - zlib
     - if: win
       then:
-      - m2w64-openssl
-      - m2w64-zlib
+        - m2w64-openssl
+        - m2w64-zlib
   run:
     - if: win
       then:
-      - m2w64-openssl
-      - m2w64-zlib
+        - m2w64-openssl
+        - m2w64-zlib
 
 tests:
   - files:
